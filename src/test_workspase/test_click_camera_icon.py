@@ -9,7 +9,8 @@ class ClickCameraIcon():
     def start_test(self):
 
 
-        camera_icon = self.driver.find_element(by=AppiumBy.XPATH, value='//android.widget.TextView[@content-desc="Photos"]')
+        camera_icon = self.driver.find_element(by=AppiumBy.XPATH,
+           value='//android.widget.Button[@resource-id="com.google.android.apps.photos:id/onboarding_action_button"]')
         camera_icon.click()
 
         time.sleep(3)

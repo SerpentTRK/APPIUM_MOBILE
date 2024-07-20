@@ -1,6 +1,36 @@
 """
 Всякие тесты
+
+Для запуска Appium-локатора:
+{
+  "platformName": "Android",
+  "automationName": "uiautomator2"
+}
+
+1. Заходим в Андроид студию, в тестовый проект. Открываем терминал
+В терминале вводим:
+1. adb shell
+2. dumpsys window displays | grep -E 'mCurrentFocus'
+В ответе первая часть это appPackage, а вторая appActivity
+
 """
+"""
+ b. adb devices
+ c. adb shell
+ d. dumpsys window displays | grep -E 'mCurrentFocus'
+ e. dumpsys window displays | grep -E 'mFocusedApp'
+ 
+ adb shell dumpsys window | find "mCurrentFocus"
+"""
+
+
+
+
+
+
+
+
+
 ## Это изначальный первый тест. Начало
 import time
 

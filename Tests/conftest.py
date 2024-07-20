@@ -9,7 +9,7 @@ from appium.options.android import UiAutomator2Options
 @pytest.fixture
 def driver():
     """
-    Фикстура создает содеинение?!
+    Фикстура создает содеинение с нужным нам элементом интерфейса
     """
     android_driver = None
     def _wrapped(appPackage, appActivity):

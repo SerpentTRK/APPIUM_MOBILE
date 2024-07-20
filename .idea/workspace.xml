@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e02134a-3a74-4068-8eb4-a4492c291e67" name="Changes" comment="Первый коммит. Создали проект">
-      <change afterPath="$PROJECT_DIR$/Tests/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tests/temp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_workspase/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_workspase/test_click_camera_icon.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test_workspase/test_find_battery.py" afterDir="false" />
+    <list default="true" id="4e02134a-3a74-4068-8eb4-a4492c291e67" name="Changes" comment="Собрал &quot;Page Object&quot;-шаблон проекта, дальше только разбираться и тестировать">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/temp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_appium.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_appium.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_workspase/test_click_camera_icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_workspase/test_click_camera_icon.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,27 +35,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for temp.test_find_battery.executor": "Run",
-    "Python tests.Python tests for test_appium.test_click_camera_icon.executor": "Run",
-    "Python tests.Python tests for test_appium.test_click_camera_icon_02.executor": "Run",
-    "Python tests.Python tests for test_appium.test_find_battery.executor": "Run",
-    "Python tests.Python tests for test_appium.test_find_battery_2.executor": "Run",
-    "Python tests.Python tests for test_appium.test_skroll.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "F:/PYTHON PROJECTS/RESTAPI_TECH",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for temp.test_find_battery.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_appium.test_click_camera_icon.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_appium.test_click_camera_icon_02.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_appium.test_find_battery.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_appium.test_find_battery_2.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests for test_appium.test_skroll.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/PYTHON PROJECTS/RESTAPI_TECH&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python tests.Python tests for test_appium.test_click_camera_icon_02">
     <configuration name="Python tests for temp.test_find_battery" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="APPIUM_MOBILE" />
@@ -143,9 +140,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for test_appium.test_click_camera_icon_02" />
+        <item itemvalue="Python tests.Python tests for temp.test_find_battery" />
         <item itemvalue="Python tests.Python tests for test_appium.test_find_battery" />
         <item itemvalue="Python tests.Python tests for test_appium.test_find_battery_2" />
-        <item itemvalue="Python tests.Python tests for temp.test_find_battery" />
         <item itemvalue="Python tests.Python tests for test_appium.test_click_camera_icon" />
       </list>
     </recent_temporary>
@@ -168,7 +165,8 @@
       <workItem from="1721453563572" duration="2309000" />
       <workItem from="1721457092263" duration="181000" />
       <workItem from="1721457307656" duration="35000" />
-      <workItem from="1721457366546" duration="12109000" />
+      <workItem from="1721457366546" duration="18639000" />
+      <workItem from="1721496953505" duration="3232000" />
     </task>
     <task id="LOCAL-00001" summary="Первый коммит. Создали проект">
       <option name="closed" value="true" />
@@ -178,7 +176,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721456954169</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Собрал &quot;Page Object&quot;-шаблон проекта, дальше только разбираться и тестировать">
+      <option name="closed" value="true" />
+      <created>1721472005321</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1721472005321</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,9 +203,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Первый коммит. Создали проект" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первый коммит. Создали проект" />
+    <MESSAGE value="Собрал &quot;Page Object&quot;-шаблон проекта, дальше только разбираться и тестировать" />
+    <option name="LAST_COMMIT_MESSAGE" value="Собрал &quot;Page Object&quot;-шаблон проекта, дальше только разбираться и тестировать" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/APPIUM_MOBILE$.coverage" NAME=" Coverage Results" MODIFIED="1721471552950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
+    <SUITE FILE_PATH="coverage/APPIUM_MOBILE$.coverage" NAME=" Coverage Results" MODIFIED="1721498946572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
   </component>
 </project>
