@@ -1,10 +1,9 @@
 
-from src.test_workspase.test_click_camera_icon import ClickCameraIcon
+from src.test_workspase.test_camera import Camera
 
 
 
-def test_click_camera_icon(driver):
-
-    element = ClickCameraIcon(driver)
-    element.start_test()
+def test_camera(driver):
+    element = Camera(driver)
+    element.run_test()
 
