@@ -8,10 +8,8 @@ class ClickCameraIcon():
 
     def start_test(self):
 
-
-        camera_icon = self.driver.find_element(by=AppiumBy.XPATH,
-           value='//android.widget.Button[@resource-id="com.google.android.apps.photos:id/onboarding_action_button"]')
-        camera_icon.click()
+        button_confirm = self.driver.find_element(AppiumBy.ID, "com.oplus.camera:id/btn_confirm")
+        button_confirm.click()
 
         time.sleep(3)
 
