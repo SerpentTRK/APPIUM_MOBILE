@@ -1,4 +1,4 @@
-
+from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common import TimeoutException
@@ -25,3 +25,14 @@ class Methods():
         except TimeoutException:
             print(f"Элемент с локатором {locator} не был найден за {time} секунд")
             return None
+
+    def swipe_banner(self, banner_locator):
+        if self.find_element(banner_locator):
+            action = ActionChains(self.driver)
+            element = self.find_element(banner_locator)
+
+            # # Пример действия: клик по элементу
+            # action.click(element).perform()
+
+            # Пример действия: свайп
+            action.drag_and_drop_by_offset(element, 0, 300).perform()
