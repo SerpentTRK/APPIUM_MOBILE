@@ -58,6 +58,8 @@ import pytest
 from appium import webdriver
 from appium.webdriver.common.appiumby import AppiumBy
 from appium.options.android import UiAutomator2Options
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 
 
@@ -85,7 +87,19 @@ def test_find_battery(driver):
     el = driver.find_element(AppiumBy.ID, "com.oplus.camera:id/btn_confirm")
     el.click()
 
+    driver.find_element(AppiumBy.ID, '00000000-0000-026d-ffff-ffff00000052')
+
+    driver.press_keycode()
+
     time.sleep(3)
 
 ## Это образец работающего теста, где все на одной странице. Конец
 
+"""
+self.driver.press_keycode(4)  # -> BACK, 3 - HOME
+
+Для навигации на экран с открытыми приложениями в Appium обычно используется команда 
+driver.pressKey(new KeyEvent(AndroidKey.APP_SWITCH));. 
+Чтобы нажать кнопку "Квадратик", можно использовать команду driver.pressKey(new KeyEvent(AndroidKey.HOME));. 
+Для нажатия на кнопку "стрелочка" можно воспользоваться командой driver.pressKey(new KeyEvent(AndroidKey.BACK));.
+"""

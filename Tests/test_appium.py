@@ -1,9 +1,8 @@
 
-from src.test_workspase.test_camera import Camera
+from src.test_workspase.open_ozon_application import OpenOzonApplication
 
 
 
-def test_camera(driver):
-    element = Camera(driver)
-    element.run_test()
-
+def test_open_ozon_application(driver):
+    application = OpenOzonApplication(driver)
+    application.run_test()

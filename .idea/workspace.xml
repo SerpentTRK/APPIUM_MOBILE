@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e02134a-3a74-4068-8eb4-a4492c291e67" name="Changes" comment="Продолжаем осваивать тестирование. С виртуального телефона перешли на реальный.">
-      <change afterPath="$PROJECT_DIR$/src/test_workspase/test_camera.py" afterDir="false" />
+    <list default="true" id="4e02134a-3a74-4068-8eb4-a4492c291e67" name="Changes" comment="Тестовый тест готов.. Можно попробовать что-то сложное потестировать">
+      <change afterPath="$PROJECT_DIR$/src/methods/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/methods/methods.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test_workspase/open_ozon_application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/temp.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/temp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tests/test_appium.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/test_appium.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_workspase/test_click_camera_icon.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_workspase/test_camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_workspase/test_camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/appium_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/appium_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,21 +47,22 @@
     "Python tests.Python tests for test_appium.test_click_camera_icon_02.executor": "Run",
     "Python tests.Python tests for test_appium.test_find_battery.executor": "Run",
     "Python tests.Python tests for test_appium.test_find_battery_2.executor": "Run",
+    "Python tests.Python tests for test_appium.test_open_ozon_application.executor": "Run",
     "Python tests.Python tests for test_appium.test_skroll.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "F:/PYTHON PROJECTS/RESTAPI_TECH",
+    "last_opened_file_path": "F:/ОБУЧЕНИЕ/PyTest/PyTest_Selenium_PageObject_DEMOQA",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "settings.editor.selected.configurable": "preferences.general",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests for test_appium.test_camera">
+  <component name="RunManager" selected="Python tests.Python tests for test_appium.test_open_ozon_application">
     <configuration name="Python tests for temp_2.test_find_battery" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="APPIUM_MOBILE" />
       <option name="ENV_FILES" value="" />
@@ -123,7 +127,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_appium.test_click_camera_icon_02" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_appium.test_open_ozon_application" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="APPIUM_MOBILE" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,17 +139,17 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_appium.test_click_camera_icon_02&quot;" />
+      <option name="_new_target" value="&quot;test_appium.test_open_ozon_application&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Python tests for test_appium.test_open_ozon_application" />
         <item itemvalue="Python tests.Python tests for test_appium.test_camera" />
         <item itemvalue="Python tests.Python tests for test_appium.test_click_camera_icon" />
         <item itemvalue="Python tests.Python tests for temp_2.test_find_battery" />
         <item itemvalue="Python tests.Python tests for temp.test_find_battery" />
-        <item itemvalue="Python tests.Python tests for test_appium.test_click_camera_icon_02" />
       </list>
     </recent_temporary>
   </component>
@@ -173,7 +177,7 @@
       <workItem from="1721543672111" duration="471000" />
       <workItem from="1721544270584" duration="231000" />
       <workItem from="1721544528338" duration="7009000" />
-      <workItem from="1721655723324" duration="14854000" />
+      <workItem from="1721655723324" duration="23323000" />
     </task>
     <task id="LOCAL-00001" summary="Первый коммит. Создали проект">
       <option name="closed" value="true" />
@@ -207,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721666090739</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Тестовый тест готов.. Можно попробовать что-то сложное потестировать">
+      <option name="closed" value="true" />
+      <created>1721677974739</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721677974739</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,9 +241,10 @@
     <MESSAGE value="Собрал &quot;Page Object&quot;-шаблон проекта, дальше только разбираться и тестировать" />
     <MESSAGE value="Разобрался как искать appPackage и appActivity. Сделал свой тест" />
     <MESSAGE value="Продолжаем осваивать тестирование. С виртуального телефона перешли на реальный." />
-    <option name="LAST_COMMIT_MESSAGE" value="Продолжаем осваивать тестирование. С виртуального телефона перешли на реальный." />
+    <MESSAGE value="Тестовый тест готов.. Можно попробовать что-то сложное потестировать" />
+    <option name="LAST_COMMIT_MESSAGE" value="Тестовый тест готов.. Можно попробовать что-то сложное потестировать" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/APPIUM_MOBILE$.coverage" NAME=" Coverage Results" MODIFIED="1721677079957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
+    <SUITE FILE_PATH="coverage/APPIUM_MOBILE$.coverage" NAME=" Coverage Results" MODIFIED="1721813087965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Tests" />
   </component>
 </project>

@@ -9,8 +9,10 @@ capabilities = dict(
     platformName='Android',
     automationName='uiautomator2',
     deviceName='Android',
-    appPackage='com.oplus.camera',  # атрибут тестируемого приложения
-    appActivity='.Camera',  # атрибут тестируемого приложения
+    appPackage='ru.ozon.app.android',                            # атрибут тестируемого приложения
+    appActivity='ru.ozon.app.android.ui.start.AppHostActivity',  # атрибут тестируемого приложения
+    # appPackage='com.oplus.camera',  # атрибут тестируемого приложения
+    # appActivity='.Camera',          # атрибут тестируемого приложения
 )
 
 capabilities_options = UiAutomator2Options().load_capabilities(capabilities)
