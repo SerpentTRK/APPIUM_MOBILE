@@ -145,7 +145,13 @@ class OpenOzonApplication(Methods):
     android.permission.WRITE_SECURE_SETTINGS через adb shell:
         adb shell pm grant com.arlosoft.macrodroid android.permission.WRITE_SECURE_SETTINGS
 """
+"""
+Installation плагин images для сравнения изображений
+appium plugin install images
+The plugin must be explicitly activated when launching the Appium server:
 
+appium --use-plugins=images
+"""
 
 ## Это образец работающего теста, где все на одной странице. Начало
 
@@ -201,7 +207,14 @@ driver.pressKey(new KeyEvent(AndroidKey.APP_SWITCH));.
 Чтобы нажать кнопку "Квадратик", можно использовать команду driver.pressKey(new KeyEvent(AndroidKey.HOME));. 
 Для нажатия на кнопку "стрелочка" можно воспользоваться командой driver.pressKey(new KeyEvent(AndroidKey.BACK));.
 """
+## рабочий тест для формирования скриншотов. Этот метод вызывает базовый метод в Methods. Нужно только менять
+# имена сохраняемых файлов
+import os
+def take_and_save_screenshot(self):
+    folder_path = os.path.join(os.getcwd(), "resources")  # Получаем путь к папке resources внутри проекта
+    self.take_screenshot(folder_path, "screenshot_system color.png")
 
+###########################################
 
 ## Сравнение изображений
 # from selenium import webdriver

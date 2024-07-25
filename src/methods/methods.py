@@ -1,8 +1,12 @@
 import base64
 import os
+import io
+import time
+
 
 from PIL import Image
 from io import BytesIO
+
 
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver import ActionChains
@@ -123,20 +127,73 @@ class Methods():
             self.driver.swipe(start_x, start_y, end_x, start_y, 800)
 
     def take_screenshot(self, folder, filename):
-        # screenshot = self.driver.get_screenshot_as_base64()
-        # filepath = os.path.join(folder, filename)
-        #
-        # with open(filepath, "wb") as file:
-        #     file.write(base64.b64decode(screenshot))
-
+        """
+        Для валидации интерфейса нам нужно делать скриншоты
+        """
         screenshot = self.driver.get_screenshot_as_base64()
         screen_image = Image.open(BytesIO(base64.b64decode(screenshot)))
 
         # Отрезание верхних 50 пикселей
         cropped_image = screen_image.crop((0, 150, screen_image.width, screen_image.height))
-        # # Отрезание верхних 50 пикселей
-        # cropped_image = screen_image.crop((0, 50, screen_image.width, screen_image.height))
-        # cropped_image = cropped_image.crop((0, 0, cropped_image.width, cropped_image.height - 50))  # Обновление высоты
 
         filepath = os.path.join(folder, filename)
         cropped_image.save(filepath)  # Сохранение отрезанного скриншота
+
+    def compare_interface_with_screen(self, interface_image_name):
+        """
+        Сравнение обрезанного скриншота с изображением интерфейса
+        """
+        # Получение снимка экрана
+        screenshot = self.driver.get_screenshot_as_png()
+        screenshot_image = Image.open(io.BytesIO(screenshot))
+
+        # Обрезка верхней части скриншота на 150 пикселей
+        screenshot_cropped = screenshot_image.crop((0, 150, screenshot_image.width, screenshot_image.height))
+
+        # Путь к изображению интерфейса
+        interface_image_path = '..\\resources\\' + interface_image_name
+
+        # Загрузка изображения интерфейса
+        interface_image = Image.open(interface_image_path)
+        time.sleep(1)
+        # Сравнение обрезанного скриншота и изображения интерфейса
+        if screenshot_cropped.tobytes() == interface_image.tobytes():
+            print("Изображения идентичны.")
+        else:
+            print("Изображения различаются.")
+
+
+
+    # def compare_interface_with_screen(self, interface_image_name, threshold=0.05):
+    #     """
+    #     Сравнение обрезанного скриншота с изображением интерфейса
+    #     нужен импорт import cv2. установка библиотека OpenCV и numpy
+    #     """
+    #
+    #
+    #     # Получение снимка экрана
+    #     screenshot = self.driver.get_screenshot_as_png()
+    #     screenshot_image = Image.open(io.BytesIO(screenshot))
+    #
+    #     # Обрезка верхней части скриншота на 150 пикселей
+    #     screenshot_cropped = screenshot_image.crop((0, 150, screenshot_image.width, screenshot_image.height))
+    #
+    #     # Путь к изображению интерфейса
+    #     interface_image_path = '..\\resources\\' + interface_image_name
+    #
+    #     # Загрузка изображения интерфейса
+    #     interface_image = Image.open(interface_image_path)
+    #
+    #     # Преобразование изображений в массивы numpy
+    #     screenshot_array = np.array(screenshot_cropped)
+    #     interface_array = np.array(interface_image)
+    #
+    #     # Вычисление различий между изображениями
+    #     difference = cv2.absdiff(screenshot_array, interface_array)
+    #     diff_percentage = (np.count_nonzero(difference) / screenshot_array.size)
+    #
+    #     # Сравнение с порогом несовпадения
+    #     if diff_percentage <= threshold:
+    #         print("Изображения почти идентичны.")
+    #     else:
+    #         print("Изображения различаются.")

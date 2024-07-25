@@ -16,10 +16,16 @@ class CreateOrEnterUserAccount(Methods):
         self.push_button_remind_me_later()
         self.swipe_banner()
         self.user_accaunt()
-        self.swipe_down(2)
-        self.swipe_up(3)
-        time.sleep(1)
-        self.take_and_save_screenshot()
+        # self.swipe_down(2)
+        # self.swipe_up(3)
+
+        time.sleep(1.5)
+        # self.take_and_save_screenshot()
+
+        self.compare_interface_with_screen("screenshot_app_system_color.png")
+
+        # self.change_app_color()
+        # # надо в методе добавить изменеие цвета и сделать еще один скриншот
 
 
 
@@ -31,13 +37,16 @@ class CreateOrEnterUserAccount(Methods):
         my_accaunt = self.find_element(UserAccountLocators.LOCATOR_CREATE_OR_ENTER_USER_ACCAUNT)
         my_accaunt.click()
 
-    def change_app_color(self):
-        app_color = self.find_element(UserAccountLocators.LOCATOR_COLOR_APP)
-        app_color.click()
-
     def take_and_save_screenshot(self):
         folder_path = os.path.join(os.getcwd(), "resources")  # Получаем путь к папке resources внутри проекта
-        self.take_screenshot(folder_path, "screenshot_system color.png")
+        self.take_screenshot(folder_path, "screenshot_app_system_color.png")
+
+    def change_app_color(self):
+        app_color = self.find_element(UserAccountLocators.LOCATOR_COLOR_APP)
+
+
+
+
 
 
 
