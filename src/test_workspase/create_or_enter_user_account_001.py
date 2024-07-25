@@ -1,7 +1,7 @@
 
 import time
 
-from src.data_for_tests.check_user_accaunt_001_testdata import UserAccountLocators
+from src.data_for_tests.create_or_enter_user_account_001_testdata import UserAccountLocators
 from src.methods.methods import Methods
 
 
