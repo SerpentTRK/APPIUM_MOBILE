@@ -8,7 +8,9 @@ class UserAccountLocators:
     Класс содержит локаторы для конкретной тестируемой страницы
     """
     LOCATOR_CREATE_OR_ENTER_USER_ACCAUNT = (AppiumBy.XPATH,
-                '(//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/tab_icon"])[6]')
+        '(//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/tab_icon"])[6]')
+    LOCATOR_COLOR_APP = (AppiumBy.XPATH, '//androidx.recyclerview.widget.RecyclerView[@resource-id='
+         '"ru.ozon.app.android:id/listRv"]/android.widget.FrameLayout[2]/android.view.ViewGroup/android.view.View[5]')
 
 
 

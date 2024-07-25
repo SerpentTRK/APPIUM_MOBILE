@@ -1,3 +1,9 @@
+import base64
+import os
+
+from PIL import Image
+from io import BytesIO
+
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
@@ -82,18 +88,55 @@ class Methods():
     def swipe_up(self, repeat_n_times=1):
         """
         Скроллим страницу вверх
-
-         start_y = берем 80% высоты экрана и используем это значение как начальную точку y для свайпа вниз
-         end_y = 20% высоты экрана и используется как конечная точка y для свайпа
-         start_x = мы берем половину ширины экрана и используем это значение как x координату для свайпа. Таким образом,
-        свайп будет происходить по центру экрана по горизонтали.
         """
         size = self.driver.get_window_size()
 
-        print(size['height'], size['height'] * 0.2, size['height'] * 0.8)
         start_y = size['height'] * 0.2 # 482
         end_y = size['height'] * 0.8  # 1929
         start_x = size['width'] / 2
 
         for each in range(1, repeat_n_times):
             self.driver.swipe(start_x, start_y, start_x, end_y, 800)
+
+    def swipe_right(self, repeat_n_times=1):
+        """
+        Скроллим страницу вправо
+        """
+        size = self.driver.get_window_size()
+        start_x = size['width'] * 0.2
+        end_x = size['width'] * 0.8
+        start_y = size['height'] / 2
+
+        for each in range(1, repeat_n_times):
+            self.driver.swipe(start_x, start_y, end_x, start_y, 800)
+
+    def swipe_left(self, repeat_n_times=1):
+        """
+        Скроллим страницу влево
+        """
+        size = self.driver.get_window_size()
+        start_x = size['width'] * 0.8
+        end_x = size['width'] * 0.2
+        start_y = size['height'] / 2
+
+        for each in range(1, repeat_n_times):
+            self.driver.swipe(start_x, start_y, end_x, start_y, 800)
+
+    def take_screenshot(self, folder, filename):
+        # screenshot = self.driver.get_screenshot_as_base64()
+        # filepath = os.path.join(folder, filename)
+        #
+        # with open(filepath, "wb") as file:
+        #     file.write(base64.b64decode(screenshot))
+
+        screenshot = self.driver.get_screenshot_as_base64()
+        screen_image = Image.open(BytesIO(base64.b64decode(screenshot)))
+
+        # Отрезание верхних 50 пикселей
+        cropped_image = screen_image.crop((0, 150, screen_image.width, screen_image.height))
+        # # Отрезание верхних 50 пикселей
+        # cropped_image = screen_image.crop((0, 50, screen_image.width, screen_image.height))
+        # cropped_image = cropped_image.crop((0, 0, cropped_image.width, cropped_image.height - 50))  # Обновление высоты
+
+        filepath = os.path.join(folder, filename)
+        cropped_image.save(filepath)  # Сохранение отрезанного скриншота
