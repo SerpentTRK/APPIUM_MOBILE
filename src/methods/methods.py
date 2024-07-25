@@ -1,9 +1,10 @@
 import base64
 import os
 import io
+import cv2
 import time
 
-
+import numpy as np
 from PIL import Image
 from io import BytesIO
 
@@ -139,38 +140,10 @@ class Methods():
         filepath = os.path.join(folder, filename)
         cropped_image.save(filepath)  # Сохранение отрезанного скриншота
 
-    def compare_interface_with_screen(self, interface_image_name):
-        """
-        Сравнение обрезанного скриншота с изображением интерфейса
-        """
-        # Получение снимка экрана
-        screenshot = self.driver.get_screenshot_as_png()
-        screenshot_image = Image.open(io.BytesIO(screenshot))
-
-        # Обрезка верхней части скриншота на 150 пикселей
-        screenshot_cropped = screenshot_image.crop((0, 150, screenshot_image.width, screenshot_image.height))
-
-        # Путь к изображению интерфейса
-        interface_image_path = '..\\resources\\' + interface_image_name
-
-        # Загрузка изображения интерфейса
-        interface_image = Image.open(interface_image_path)
-        time.sleep(1)
-        # Сравнение обрезанного скриншота и изображения интерфейса
-        if screenshot_cropped.tobytes() == interface_image.tobytes():
-            print("Изображения идентичны.")
-        else:
-            print("Изображения различаются.")
-
-
-
-    # def compare_interface_with_screen(self, interface_image_name, threshold=0.05):
+    # def compare_interface_with_screen(self, interface_image_name):
     #     """
     #     Сравнение обрезанного скриншота с изображением интерфейса
-    #     нужен импорт import cv2. установка библиотека OpenCV и numpy
     #     """
-    #
-    #
     #     # Получение снимка экрана
     #     screenshot = self.driver.get_screenshot_as_png()
     #     screenshot_image = Image.open(io.BytesIO(screenshot))
@@ -183,17 +156,46 @@ class Methods():
     #
     #     # Загрузка изображения интерфейса
     #     interface_image = Image.open(interface_image_path)
-    #
-    #     # Преобразование изображений в массивы numpy
-    #     screenshot_array = np.array(screenshot_cropped)
-    #     interface_array = np.array(interface_image)
-    #
-    #     # Вычисление различий между изображениями
-    #     difference = cv2.absdiff(screenshot_array, interface_array)
-    #     diff_percentage = (np.count_nonzero(difference) / screenshot_array.size)
-    #
-    #     # Сравнение с порогом несовпадения
-    #     if diff_percentage <= threshold:
-    #         print("Изображения почти идентичны.")
+    #     time.sleep(1)
+    #     # Сравнение обрезанного скриншота и изображения интерфейса
+    #     if screenshot_cropped.tobytes() == interface_image.tobytes():
+    #         print("Изображения идентичны.")
     #     else:
     #         print("Изображения различаются.")
+
+
+
+    def compare_interface_with_screen(self, interface_image_name, threshold=0.05):
+        """
+        Сравнение обрезанного скриншота с изображением интерфейса
+        нужен импорт import cv2. установка библиотека OpenCV и numpy
+        """
+
+
+        # Получение снимка экрана
+        screenshot = self.driver.get_screenshot_as_png()
+        screenshot_image = Image.open(io.BytesIO(screenshot))
+
+        # Обрезка верхней части скриншота на 150 пикселей
+        screenshot_cropped = screenshot_image.crop((0, 150, screenshot_image.width, screenshot_image.height))
+
+        # Путь к изображению интерфейса
+        interface_image_path = '..\\resources\\' + interface_image_name
+
+        # Загрузка изображения интерфейса
+        interface_image = Image.open(interface_image_path)
+
+        # Преобразование изображений в массивы numpy
+        screenshot_array = np.array(screenshot_cropped)
+        interface_array = np.array(interface_image)
+
+        # Вычисление различий между изображениями
+        difference = cv2.absdiff(screenshot_array, interface_array)
+        diff_percentage = (np.count_nonzero(difference) / screenshot_array.size)
+        print(diff_percentage)
+
+        # Сравнение с порогом несовпадения
+        if diff_percentage <= threshold:
+            print("Изображения почти идентичны.")
+        else:
+            print("Изображения различаются.")
