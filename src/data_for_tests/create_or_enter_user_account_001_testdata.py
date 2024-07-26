@@ -12,7 +12,9 @@ class UserAccountLocators:
     LOCATOR_COLOR_APP = (AppiumBy.XPATH,
         '//androidx.recyclerview.widget.RecyclerView[@resource-id="ru.ozon.app.android:id/listRv"]'
         '/android.widget.FrameLayout[2]/android.view.ViewGroup/android.view.View[5]')
-
+    LOCATOR_DARK_THEME = (AppiumBy.ID, 'ru.ozon.app.android:id/darkV')
+    LOCATOR_SYSTEM_THEME = (AppiumBy.ID, 'ru.ozon.app.android:id/inSystemV')
+    LOCATOR_COLOR_APP_EXIT = (AppiumBy.ID, 'ru.ozon.app.android:id/collapsingTl')
 
 class UserAccountTestdata:
     """

@@ -211,7 +211,7 @@ driver.pressKey(new KeyEvent(AndroidKey.APP_SWITCH));.
 # имена сохраняемых файлов
 import os
 def take_and_save_screenshot(self):
-    folder_path = os.path.join(os.getcwd(), "resources")  # Получаем путь к папке resources внутри проекта
+    folder_path = os.path.join(os.getcwd(), "save_screenshot")  # Получаем путь к папке save_screenshot внутри проекта
     self.take_screenshot(folder_path, "screenshot_system color.png")
 
 ###########################################

@@ -4,6 +4,7 @@ import io
 import cv2
 import time
 
+from pytest_check import check
 import numpy as np
 from PIL import Image
 from io import BytesIO
@@ -54,7 +55,11 @@ class Methods():
            '//android.view.ViewGroup[@resource-id="ru.ozon.app.android:id/remindLater"]/android.view.View[1]')
 
         button_remind_later = self.find_element(LOCATOR_REMIND_MY_LETTER_BUTTON)
-        button_remind_later.click()
+        if button_remind_later is not None:
+            button_remind_later.click()
+        else:
+            print('Handle the case when element is not found')
+
 
     def swipe_banner(self):
         """
@@ -140,48 +145,19 @@ class Methods():
         filepath = os.path.join(folder, filename)
         cropped_image.save(filepath)  # Сохранение отрезанного скриншота
 
-    # def compare_interface_with_screen(self, interface_image_name):
-    #     """
-    #     Сравнение обрезанного скриншота с изображением интерфейса
-    #     """
-    #     # Получение снимка экрана
-    #     screenshot = self.driver.get_screenshot_as_png()
-    #     screenshot_image = Image.open(io.BytesIO(screenshot))
-    #
-    #     # Обрезка верхней части скриншота на 150 пикселей
-    #     screenshot_cropped = screenshot_image.crop((0, 150, screenshot_image.width, screenshot_image.height))
-    #
-    #     # Путь к изображению интерфейса
-    #     interface_image_path = '..\\resources\\' + interface_image_name
-    #
-    #     # Загрузка изображения интерфейса
-    #     interface_image = Image.open(interface_image_path)
-    #     time.sleep(1)
-    #     # Сравнение обрезанного скриншота и изображения интерфейса
-    #     if screenshot_cropped.tobytes() == interface_image.tobytes():
-    #         print("Изображения идентичны.")
-    #     else:
-    #         print("Изображения различаются.")
-
-
-
     def compare_interface_with_screen(self, interface_image_name, threshold=0.05):
         """
         Сравнение обрезанного скриншота с изображением интерфейса
         нужен импорт import cv2. установка библиотека OpenCV и numpy
         """
-
-
         # Получение снимка экрана
         screenshot = self.driver.get_screenshot_as_png()
         screenshot_image = Image.open(io.BytesIO(screenshot))
-
         # Обрезка верхней части скриншота на 150 пикселей
         screenshot_cropped = screenshot_image.crop((0, 150, screenshot_image.width, screenshot_image.height))
 
         # Путь к изображению интерфейса
         interface_image_path = '..\\resources\\' + interface_image_name
-
         # Загрузка изображения интерфейса
         interface_image = Image.open(interface_image_path)
 
@@ -192,10 +168,11 @@ class Methods():
         # Вычисление различий между изображениями
         difference = cv2.absdiff(screenshot_array, interface_array)
         diff_percentage = (np.count_nonzero(difference) / screenshot_array.size)
-        print(diff_percentage)
 
-        # Сравнение с порогом несовпадения
+        check.less_equal(diff_percentage, threshold, msg=f"Ошибка! Скриншот отличается от эталонного изображения {interface_image_name} более чем на {threshold}%")
+
+        # Сравнение с порогом несовпадения. Пока оставим
         if diff_percentage <= threshold:
-            print("Изображения почти идентичны.")
+            print(f"Изображения почти идентичны. Различия составляют {diff_percentage}%")
         else:
             print("Изображения различаются.")
