@@ -23,6 +23,10 @@ class UserCartLocators:
     LOCATOR_MY_PVZ = (AppiumBy.XPATH,
         '(//androidx.recyclerview.widget.RecyclerView[@resource-id="ru.ozon.app.android:id/listRv"])[2]')
 
+    LOCATOR_OLD_PVZ = (AppiumBy.XPATH, '//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/buttonIv"]')
+    LOCATOR_DEL_PVZ = (AppiumBy.ID, 'ru.ozon.app.android:id/popupTitleTv')
+    LOCATOR_DEL_CONFIRM = (AppiumBy.ID, 'android:id/button1')
+
     LOCATOR_TROITSK_MAP = (AppiumBy.XPATH,
        '//android.view.ViewGroup[@resource-id="ru.ozon.app.android:id/containerLayout"]/android.view.ViewGroup')
 
