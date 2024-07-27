@@ -13,6 +13,8 @@ swipe_banner_locator = (AppiumBy.ID, 'ru.ozon.app.android:id/sheetDialogTongue')
 
 user_accaunt_locator = (AppiumBy.XPATH, '(//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/tab_icon"])[6]')
 user_cart_locator = (AppiumBy.XPATH, '(//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/tab_icon"])[5]')
+
+
 ozon_bank_card_locator = (AppiumBy.XPATH, '(//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/tab_icon"])[4]')
 exit_button_locator = (AppiumBy.XPATH, '//android.widget.ImageButton')
 fashion_locator = (AppiumBy.XPATH, '(//android.widget.ImageView[@resource-id="ru.ozon.app.android:id/tab_icon"])[3]')
@@ -233,51 +235,14 @@ def take_and_save_screenshot(self):
 # assert result.score > 0.0
 # ##
 
+"""
+        # Кликнуть в точку на экране по заданным координатам (x, y)
+        self.driver.tap([(14, 1714)])
 
-# # Импорт необходимых модулей
-# from PIL import Image
-# from io import BytesIO
-# from appium import images
-#
-#     # Создание скриншота экрана с отрезанными верхними 50 пикселями и сохранение на диск
-#     def take_and_save_screenshot_without_top_region(self, top_region_height, save_path):
-#         # Получение скриншота экрана
-#         screenshot = self.driver.get_screenshot_as_base64()
-#         screen_image = Image.open(BytesIO(base64.b64decode(screenshot)))
-#
-#         # Отрезание верхних 50 пикселей
-#         screen_width, screen_height = screen_image.size
-#         cropped_image = screen_image.crop((0, top_region_height, screen_width, screen_height))
-#
-#         # Сохранение отрезанного скриншота
-#         cropped_image.save(save_path)
-#
-#         return cropped_image
-#
-#
-#
-#     # Загрузка изображения интерфейса и сравнение с определенной областью изображения на экране за исключением верхних 50 пикселей
-#     def compare_screen_without_top_region(self, interface_image_path, top_region_height):
-#         # Загрузка изображения интерфейса
-#         interface_image = Image.open(interface_image_path)
-#
-#         # Получение скриншота экрана
-#         screenshot = driver.get_screenshot_as_base64()
-#         screen_image = Image.open(BytesIO(base64.b64decode(screenshot)))
-#
-#         # Определение и выделение области на скриншоте без верхних 50 пикселей
-#         screen_width, screen_height = screen_image.size
-#         region = screen_image.crop((0, top_region_height, screen_width, screen_height))
-#
-#         # Сравнение изображения интерфейса с областью на экране без верхних 50 пикселей
-#         comparison_result = images.compare_images_from_pil_images(region, interface_image)
-#
-#         if comparison_result["result"]:
-#             print("Изображения в указанной области идентичны.")
-#         else:
-#             print(
-#                 "Изображения в указанной области различаются. Различия: {}".format(comparison_result["diff_image_base64"]))
-#
-#
-#     # Пример использования
-#     compare_screen_without_top_region(driver, "expected_interface.png", top_region_height=50)
+        # Выполнить свайп вправо на 400 пикселей
+        start_x = 14
+        start_y = 1714
+        end_x = start_x + 400
+        end_y = start_y
+        self.driver.swipe(start_x, start_y, end_x, end_y, 800)
+"""

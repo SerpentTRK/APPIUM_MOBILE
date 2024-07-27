@@ -1,4 +1,4 @@
-import base64
+
 import time
 import os
 
@@ -17,15 +17,11 @@ class CreateOrEnterUserAccount(Methods):
         self.swipe_banner()
         self.user_accaunt()
         self.change_app_color()
-        time.sleep(3)
         self.swipe_down(4)
         self.swipe_up(4)
 
         self.driver.press_keycode(4)  # -> BACK
         time.sleep(1)
-
-        # self.take_and_save_screenshot()
-        # self.compare_interface_with_screen("screenshot_app_system_color.png")
 
     def user_accaunt(self):
         my_accaunt = self.find_element(UserAccountLocators.LOCATOR_CREATE_OR_ENTER_USER_ACCAUNT)

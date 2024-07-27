@@ -1,12 +1,13 @@
-from src.test_workspase.create_or_enter_user_account_001 import CreateOrEnterUserAccount
-from src.test_workspase.open_ozon_application import OpenOzonApplication
 
+from src.test_workspase.open_ozon_application import OpenOzonApplication
+from src.test_workspase.create_or_enter_user_account_001 import CreateOrEnterUserAccount
+from src.test_workspase.user_cart_002 import UserCart
 
 
 def test_open_ozon_application(driver):
     """
     Запуск приложения. Закрываем рекламный баннер, если он появляется.
-    Дальше пока не придумал.
+    Валидируем главный экран на соответствие эталонному изображению
     """
     run_application = OpenOzonApplication(driver)
     run_application.run_test()
@@ -22,3 +23,10 @@ def test_create_or_enter_user_account_001(driver):
     """
     user_accaunt = CreateOrEnterUserAccount(driver)
     user_accaunt.run_test()
+
+def test_user_cart_002(driver):
+    """
+    Раздел интерфейса для доступа к корзине покупателя.
+    """
+    user_cart = UserCart(driver)
+    user_cart.run_test()

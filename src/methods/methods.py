@@ -25,14 +25,14 @@ class Methods():
     def __init__(self, driver):
         self.driver = driver
 
-    def find_element(self, locator, time=2):
+    def find_element(self, locator, time=4):
         try:
             return WebDriverWait(self.driver, time).until(lambda driver: driver.find_element(*locator))
         except TimeoutException:
             print(f"Элемент с локатором {locator} не был найден за {time} секунд")
             return None
 
-    def find_elements(self, locator, time=2):
+    def find_elements(self, locator, time=4):
         try:
             return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(*locator))
         except TimeoutException:
@@ -132,6 +132,27 @@ class Methods():
         for each in range(1, repeat_n_times):
             self.driver.swipe(start_x, start_y, end_x, start_y, 800)
 
+    def choice_point_in_screen(self, x, y):
+        """
+        Коснуться точки на экране по координатам
+        """
+        self.driver.tap([(x, y)])
+
+    def swipe_map(self, start_x, start_y, end_x, end_y):
+        """
+        Свайп для работы по координатам. Использую на карте
+        Не знаю почему, но и масштаб меняется до нужного!
+        """
+        # Кликнуть в точку на экране по заданным координатам (x, y)
+        # self.driver.tap([(start_x, start_x)])
+
+        # Выполнить свайп вправо на 400 пикселей
+        x_1 = start_x
+        y_1 = start_y
+        x_2 = end_x
+        y_2 = end_y
+        self.driver.swipe(x_1, y_1, x_2, y_2, 800)
+
     def take_screenshot(self, folder, filename):
         """
         Для валидации интерфейса нам нужно делать скриншоты
@@ -169,10 +190,8 @@ class Methods():
         difference = cv2.absdiff(screenshot_array, interface_array)
         diff_percentage = (np.count_nonzero(difference) / screenshot_array.size)
 
-        check.less_equal(diff_percentage, threshold, msg=f"Ошибка! Скриншот отличается от эталонного изображения {interface_image_name} более чем на {threshold}%")
+        check.less_equal(diff_percentage, threshold,
+                    msg=f"Ошибка! Скриншот отличается от эталонного изображения {interface_image_name} "
+                                                                            f"более чем на {threshold}%")
+        print(f"Изображения почти идентичны. Различия составляют {diff_percentage}%")
 
-        # Сравнение с порогом несовпадения. Пока оставим
-        if diff_percentage <= threshold:
-            print(f"Изображения почти идентичны. Различия составляют {diff_percentage}%")
-        else:
-            print("Изображения различаются.")
