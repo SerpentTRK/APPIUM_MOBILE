@@ -2,12 +2,6 @@
 import time
 import os
 
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.actions import interaction
-from selenium.webdriver.common.actions.action_builder import ActionBuilder
-from selenium.webdriver.common.actions.interaction import POINTER_TOUCH
-from selenium.webdriver.common.actions.pointer_input import PointerInput
-
 from src.data_for_tests.user_cart_002_testdata import UserCartLocators
 from src.methods.methods import Methods
 
@@ -23,7 +17,6 @@ class UserCart(Methods):
         self.swipe_banner()
         self.user_cart()
         self.choice_destination()
-
 
         self.driver.press_keycode(4)  # -> BACK
         time.sleep(1)
@@ -87,6 +80,9 @@ class UserCart(Methods):
 
             my_pvz = self.find_element(UserCartLocators.LOCATOR_MY_PVZ)
             my_pvz.click()
+
+        address_pvz = self.find_element(UserCartLocators.LOCATOR_ADDRESS_VALIDATION).text
+        assert address_pvz == 'ул. Полковника Милиции Курочкина, 5'
 
 
     def take_and_save_screenshot(self, file_name):

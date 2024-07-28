@@ -27,9 +27,7 @@ class UserCartLocators:
     LOCATOR_DEL_PVZ = (AppiumBy.ID, 'ru.ozon.app.android:id/popupTitleTv')
     LOCATOR_DEL_CONFIRM = (AppiumBy.ID, 'android:id/button1')
 
-    LOCATOR_TROITSK_MAP = (AppiumBy.XPATH,
-       '//android.view.ViewGroup[@resource-id="ru.ozon.app.android:id/containerLayout"]/android.view.ViewGroup')
-
+    LOCATOR_ADDRESS_VALIDATION = (AppiumBy.XPATH, '//android.widget.TextView[@content-desc="rightTitle"]')
 
 
 
