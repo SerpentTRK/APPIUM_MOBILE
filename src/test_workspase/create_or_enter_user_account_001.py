@@ -17,8 +17,8 @@ class CreateOrEnterUserAccount(Methods):
         self.swipe_banner()
         self.user_accaunt()
         self.change_app_color()
-        self.swipe_down(4)
-        self.swipe_up(4)
+        self.swipe_screen_down(4)
+        self.swipe_screen_up(4)
 
         self.driver.press_keycode(4)  # -> BACK
         time.sleep(1)

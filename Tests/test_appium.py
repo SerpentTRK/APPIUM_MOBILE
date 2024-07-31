@@ -7,7 +7,7 @@ from src.test_workspase.user_cart_002 import UserCart
 def test_open_ozon_application(driver):
     """
     Запуск приложения. Закрываем рекламный баннер, если он появляется.
-    Валидируем главный экран на соответствие эталонному изображению
+    Свайпим центральную полоскуску с иконками различных сервисов
     """
     run_application = OpenOzonApplication(driver)
     run_application.run_test()
@@ -40,3 +40,4 @@ def test_user_cart_002(driver):
     """
     user_cart = UserCart(driver)
     user_cart.run_test()
+

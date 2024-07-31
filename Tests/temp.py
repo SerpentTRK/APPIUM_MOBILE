@@ -246,3 +246,87 @@ def take_and_save_screenshot(self):
         end_y = start_y
         self.driver.swipe(start_x, start_y, end_x, end_y, 800)
 """
+
+"""
+#Поиск по изображению
+
+from appium import webdriver
+from PIL import Image
+import io
+import base64
+
+# Создание экземпляра драйвера Appium
+driver = webdriver.Remote("http://localhost:4723/wd/hub", {
+    "platformName": "Android",
+    "deviceName": "emulator",
+    "appPackage": "com.example.myapp",
+    "appActivity": "com.example.myapp.MainActivity"
+})
+
+# Загрузка образца изображения
+with open("template.png", "rb") as f:
+    template_image = Image.open(f)
+    template_image_bytes = io.BytesIO()
+    template_image.save(template_image_bytes, format="PNG")
+    template_image_bytes.seek(0)
+    template_image_base64 = base64.b64encode(template_image_bytes.read()).decode()
+
+# Поиск элемента на основе образца
+element = driver.find_element("-image", template_image_base64)
+"""
+
+
+"""
+# В Appium вы можете использовать метод find_element для поиска элементов на основе их образца. Вот пример кода на 
+# Python, который ищет элемент на основе образца изображения:
+
+from appium import webdriver
+from PIL import Image
+import io
+import base64
+
+# Создание экземпляра драйвера Appium
+driver = webdriver.Remote("http://localhost:4723/wd/hub", {
+    "platformName": "Android",
+    "deviceName": "emulator",
+    "appPackage": "com.example.myapp",
+    "appActivity": "com.example.myapp.MainActivity"
+})
+
+# Загрузка образца изображения
+with open("template.png", "rb") as f:
+    template_image = Image.open(f)
+    template_image_bytes = io.BytesIO()
+    template_image.save(template_image_bytes, format="PNG")
+    template_image_bytes.seek(0)
+    template_image_base64 = base64.b64encode(template_image_bytes.read()).decode()
+
+# Поиск элемента на основе образца
+element = driver.find_element("-image", template_image_base64)
+"""
+
+"""
+# Если у вас есть более сложные требования к приближению, вы можете использовать метод pinch для 
+выполнения более детального управления приближением. Вот пример кода, который демонстрирует, как 
+использовать метод pinch для приближения элемента:
+
+from appium import webdriver
+
+# Создание экземпляра драйвера Appium
+driver = webdriver.Remote("http://localhost:4723/wd/hub", {
+    "platformName": "Android",
+    "deviceName": "emulator",
+    "appPackage": "com.example.myapp",
+    "appActivity": "com.example.myapp.MainActivity"
+})
+
+# Поиск элемента
+element = driver.find_element_by_accessibility_id("my_element")
+
+# Получение координат центра элемента
+center_x = element.size['width'] / 2 + element.location['x']
+center_y = element.size['height'] / 2 + element.location['y']
+
+# Приближение элемента
+driver.pinch(element, percent=20, center_x=center_x, center_y=center_y)
+"""

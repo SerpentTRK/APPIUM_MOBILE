@@ -77,7 +77,7 @@ class Methods():
             # Пример действия: свайп
             action.drag_and_drop_by_offset(element, 0, 300).perform()
 
-    def swipe_down(self, repeat_n_times=1):
+    def swipe_screen_down(self, repeat_n_times=1):
         """
         Скроллим страницу вниз
 
@@ -95,7 +95,7 @@ class Methods():
         for each in range(1, repeat_n_times):
             self.driver.swipe(start_x, start_y, start_x, end_y, 800)
 
-    def swipe_up(self, repeat_n_times=1):
+    def swipe_screen_up(self, repeat_n_times=1):
         """
         Скроллим страницу вверх
         """
@@ -108,37 +108,13 @@ class Methods():
         for each in range(1, repeat_n_times):
             self.driver.swipe(start_x, start_y, start_x, end_y, 800)
 
-    def swipe_right(self, repeat_n_times=1):
-        """
-        Скроллим страницу вправо
-        """
-        size = self.driver.get_window_size()
-        start_x = size['width'] * 0.2
-        end_x = size['width'] * 0.8
-        start_y = size['height'] / 2
-
-        for each in range(1, repeat_n_times):
-            self.driver.swipe(start_x, start_y, end_x, start_y, 800)
-
-    def swipe_left(self, repeat_n_times=1):
-        """
-        Скроллим страницу влево
-        """
-        size = self.driver.get_window_size()
-        start_x = size['width'] * 0.8
-        end_x = size['width'] * 0.2
-        start_y = size['height'] / 2
-
-        for each in range(1, repeat_n_times):
-            self.driver.swipe(start_x, start_y, end_x, start_y, 800)
-
     def choice_point_in_screen(self, x, y):
         """
         Коснуться точки на экране по координатам
         """
         self.driver.tap([(x, y)])
 
-    def swipe_map(self, start_x, start_y, end_x, end_y):
+    def swipe_by_coordinates(self, start_x, start_y, end_x, end_y):
         """
         Свайп для работы по координатам. Использую на карте
         Не знаю почему, но и масштаб меняется до нужного!
